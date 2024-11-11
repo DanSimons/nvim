@@ -22,11 +22,13 @@ map('n', '<C-Right>', ':vertical resize +3<CR>')
 map('n', '<C-Up>', ':horizontal resize +3<CR>')
 map('n', '<C-Down>', ':horizontal resize -3<CR>')
 
--- auto close brackets and quotes
-map('i', "'", "''<Left>")
-map('i', '"', '""<Left>')
-map('i', '(', '()<Left>')
-map('i', '[', '[]<Left>')
-map('i', '{', '{}<Left>')
+-- open mini-files
+map('n', '-', ':lua MiniFiles.open()<cr>')
+
+-- leap keymaps
+map('n', 's', '<Plug>(leap)')
+map('n', 'S', '<Plug>(leap-from-window)')
+map({ 'x', 'o' }, 's', '<Plug>(leap-forward)')
+map({ 'x', 'o' }, 's', '<Plug>(leap-backward)')
 
 return {}
