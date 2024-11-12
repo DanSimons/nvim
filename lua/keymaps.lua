@@ -1,5 +1,5 @@
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
+  local options = {}
   if opts then
     options = vim.tbl_extend('force', options, opts)
   end
@@ -21,14 +21,5 @@ map('n', '<C-Left>', ':vertical resize -3<CR>')
 map('n', '<C-Right>', ':vertical resize +3<CR>')
 map('n', '<C-Up>', ':horizontal resize +3<CR>')
 map('n', '<C-Down>', ':horizontal resize -3<CR>')
-
--- open mini-files
-map('n', '-', ':lua MiniFiles.open()<cr>')
-
--- leap keymaps
-map('n', 's', '<Plug>(leap)')
-map('n', 'S', '<Plug>(leap-from-window)')
-map({ 'x', 'o' }, 's', '<Plug>(leap-forward)')
-map({ 'x', 'o' }, 's', '<Plug>(leap-backward)')
 
 return {}
