@@ -128,9 +128,7 @@ return {
       },
       clangd = {},
       markdownlint = {},
-      pylint = {},
-      basedpyright = {},
-      pylsp = {},
+      pyright = {},
     }
 
     -- Ensure the servers and tools above are installed
