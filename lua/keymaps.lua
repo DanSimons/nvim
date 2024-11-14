@@ -17,8 +17,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-map('t', '<C-h>', '<esc><esc><C-w>p')
+map('t', '<C-h>', '<esc><esc><C-w>h')
+map('t', '<C-j>', '<esc><esc><C-w>j')
+map('t', '<C-k>', '<esc><esc><C-w>k')
+map('t', '<C-l>', '<esc><esc><C-w>l')
 map('t', '<C-c>', 'clear<CR>')
+map('t', '<C-q>', '<esc><esc>:q<CR>')
 
 -- easy splits
 map('n', '<leader>v', ':vsplit<CR>')
@@ -42,24 +46,7 @@ map('n', '<S-Tab>', ':tabp<CR>')
 
 -- qmd shortcuts
 map('n', '<leader>py', ":lua require('nvim-autopairs').disable()<CR>o```{python}<CR>```<esc>:lua require('nvim-autopairs').enable()<CR>O")
-map('n', '<leader>ci', ':vsplit term://ipython<CR> i<C-h>')
-map('n', '<C-c>', '<C-l>iclear<CR><C-h>')
-
-vim.api.nvim_create_autocmd('TermOpen', {
-  desc = 'remove line numbers in terminal',
-  group = vim.api.nvim_create_augroup('term', { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end,
-})
-
-vim.api.nvim_create_autocmd('TermResponse', {
-  desc = 'auto scroll term',
-  group = vim.api.nvim_create_augroup('term', { clear = true }),
-  callback = function()
-    vim.cmd [[ norma! G ]]
-  end,
-})
+map('n', '<leader>ci', ':vsplit term://ipython<CR> <C-h>')
+map('n', '<C-c>', '<C-l>clear<CR><C-h>')
 
 return {}

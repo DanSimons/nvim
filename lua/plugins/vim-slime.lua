@@ -4,10 +4,10 @@ return {
     vim.g.slime_target = 'neovim'
     vim.g.slime_python_ipython = 1
     vim.g.slime_dispatch_ipython_pause = 100
-    vim.g.slime_cell_delimeter = '```'
+    vim.g.slime_cell_delimeter = '#\\s\\=##'
 
     vim.cmd [[
-    function! _EscapeText_quatro(text)
+    function! _EscapeText_quarto(text)
     if slime#config#resolve("python_ipython") && len(split(a:text,"\n")) > 1
     return ["%cpaste -q\n", slime#config#resolve("dispatch_ipython_pause"), a:text, "--\n"]
     else
@@ -25,7 +25,7 @@ return {
 
   config = function()
     vim.keymap.set({ 'n' }, '<C-s>', function()
-      vim.cmd [[ call slime#send_cell() | normal! <C-l>G<C-h> ]]
+      vim.cmd [[ call slime#send_cell() ]]
     end)
   end,
 }
