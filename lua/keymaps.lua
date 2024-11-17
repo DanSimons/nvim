@@ -6,6 +6,33 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- function to create a floating buffer
+local function openFloatingBuffer()
+  local buf = vim.api.nvim_create_buf(false, true)
+  if not buf then
+    print 'aa'
+    return
+  end
+
+  -- set the dimensoins of the floating window
+  local width = math.ceil(vim.o.columns * 0.8)
+  local height = math.ceil(vim.o.lines * 0.8)
+  local row = math.ceil((vim.o.lines - height) * 0.2)
+  local col = math.ceil((vim.o.columns - width) / 2)
+
+  -- create the floating window
+  vim.api.nvim_open_win(buf, true, {
+    relative = 'editor',
+    width = width,
+    height = height,
+    row = row,
+    col = col,
+    style = 'minimal',
+    border = 'rounded',
+  })
+  print 'bbb'
+end
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -22,11 +49,16 @@ map('t', '<C-j>', '<esc><esc><C-w>j')
 map('t', '<C-k>', '<esc><esc><C-w>k')
 map('t', '<C-l>', '<esc><esc><C-w>l')
 map('t', '<C-c>', 'clear<CR>')
-map('t', '<C-q>', '<esc><esc>:q<CR>')
+map('t', ':q<CR>', '<esc><esc>:q<CR>')
 
 -- easy splits
 map('n', '<leader>v', ':vsplit<CR>')
 map('n', '<leader>h', ':split<CR>')
+vim.keymap.set('n', '<leader>f', function()
+  openFloatingBuffer()
+  vim.cmd [[ term  ]]
+  vim.cmd [[ startinsert ]]
+end, {})
 
 -- easy split nav
 map('n', '<C-h>', '<C-w>h')
