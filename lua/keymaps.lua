@@ -54,7 +54,7 @@ map('t', ':q<CR>', '<esc><esc>:q<CR>')
 -- easy splits
 map('n', '<leader>v', ':vsplit<CR>')
 map('n', '<leader>h', ':split<CR>')
-vim.keymap.set('n', '<leader>f', function()
+vim.keymap.set('n', '<leader>t', function()
   openFloatingBuffer()
   vim.cmd [[ term  ]]
   vim.cmd [[ startinsert ]]
