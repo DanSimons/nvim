@@ -48,7 +48,6 @@ map('t', '<C-h>', '<esc><esc><C-w>h')
 map('t', '<C-j>', '<esc><esc><C-w>j')
 map('t', '<C-k>', '<esc><esc><C-w>k')
 map('t', '<C-l>', '<esc><esc><C-w>l')
-map('t', '<C-c>', 'clear<CR>')
 map('t', ':q<CR>', '<esc><esc>:q<CR>')
 
 -- easy splits
@@ -75,5 +74,8 @@ map('n', '<C-Down>', ':horizontal resize -3<CR>')
 -- tab keys
 map('n', '<Tab>', ':tabn<CR>')
 map('n', '<S-Tab>', ':tabp<CR>')
+
+-- unmap J
+map('n', 'J', 'j')
 
 return {}

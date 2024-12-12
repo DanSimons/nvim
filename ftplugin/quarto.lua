@@ -11,6 +11,7 @@ end
 -- qmd shortcuts
 map('n', '<leader>py', ":lua require('nvim-autopairs').disable()<CR>o```{python}<CR>```<esc>:lua require('nvim-autopairs').enable()<CR>O")
 map('n', '<leader>ci', ':vsplit term://ipython<CR> <C-h>')
-map('n', '<C-c>', '<C-l>clear<CR><C-h>')
+map('n', '<leader>cl', '<C-l>clear<CR><C-h>')
+map('n', '<leader>cr', '<C-l>%reset -f<CR><C-h>')
 map('n', '<leader>p', ':call slime#send_cell()<CR>')
 map('n', '<leader>P', ':call slime#send_cell()<CR>/```{python}<CR><esc>')
