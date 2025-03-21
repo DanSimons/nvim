@@ -26,8 +26,14 @@ return { -- Collection of various small independent plugins/modules
     end
 
     require('mini.files').setup {
-      vim.keymap.set('n', '-', ':lua if not MiniFiles.close() then MiniFiles.open(vim.api.nvim_buf_get_name(0)) end<CR>'),
-      mappings = { close = '' },
+      vim.keymap.set('n', '-', function()
+        local ok = MiniFiles.close()
+        if not ok then
+          MiniFiles.open(vim.api.nvim_buf_get_name(0))
+        end
+      end),
+
+      -- :lua if not MiniFiles.close() then MiniFiles.open(vim.api.nvim_buf_get_name(0)) end<CR>', { noremap = true, silent = true }),
     }
 
     -- ... and there is more!
