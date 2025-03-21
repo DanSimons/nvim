@@ -5,7 +5,7 @@ return {
   opts = {
     vim.keymap.set('n', '<leader>r', ':RunCode<CR>', { silent = false }),
     filetype = {
-      python = "bash -c 'uv run $fileName'",
+      python = "bash -c 'uv run $file'",
     },
   },
 }
