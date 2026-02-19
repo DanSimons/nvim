@@ -144,21 +144,18 @@ return {
       clangd = {},
       markdownlint = {},
       ruff = {},
-      pyright = {
+      basedpyright = {
         settings = {
-          pyright = {
-            disableOrganizeImports = true,
-          },
-          python = {
-            venvPath = '.',
-            venv = '.venv',
-            analysis = {
-              -- Ignore all files and use Ruff for linting
-              autoSearchPaths = true,
-              diagnosticMode = 'workspace',
-              useLibraryCodeForTypes = true,
-              ignore = { '*' },
-            },
+          disableOrganizeImports = true,
+        },
+        python = {
+          venvPath = '.',
+          venv = '.venv',
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = 'workspace',
+            useLibraryCodeForTypes = true,
+            ignore = { '*' },
           },
         },
       },
