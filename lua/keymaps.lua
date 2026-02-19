@@ -78,4 +78,9 @@ map('n', '<S-Tab>', ':tabp<CR>')
 -- unmap J
 map('n', 'J', 'j')
 
+-- multi line strings in c
+map('x', '<leader>fh', [[:<C-u>'<,'>s/"/\\"/g | '<,'>s/^/"/ | '<,'>s/$/\\n"/<CR>:nohlsearch<CR>]], { noremap = true, silent = true })
+
+-- del without yank using x
+map('x', 'x', '"_d', { noremap = true })
 return {}
