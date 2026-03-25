@@ -163,7 +163,7 @@ return {
                 autoSearchPaths = true,
                 diagnosticMode = 'workspace',
                 useLibraryCodeForTypes = true,
-                ignore = { '*' },
+                typeCheckingMode = 'off',
               },
             },
           },
