@@ -53,11 +53,6 @@ map('t', ':q<CR>', '<esc><esc>:q<CR>')
 -- easy splits
 map('n', '<leader>v', ':vsplit<CR>')
 map('n', '<leader>h', ':split<CR>')
-vim.keymap.set('n', '<leader>t', function()
-  openFloatingBuffer()
-  vim.cmd [[ term  ]]
-  vim.cmd [[ startinsert ]]
-end, {})
 
 -- easy split nav
 map('n', '<C-h>', '<C-w>h')
@@ -83,4 +78,8 @@ map('x', '<leader>fh', [[:<C-u>'<,'>s/"/\\"/g | '<,'>s/^/"/ | '<,'>s/$/\\n"/<CR>
 
 -- del without yank using x
 map('x', 'x', '"_d', { noremap = true })
+
+-- diagnostic float
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { noremap = true, desc = 'Open [D]iagnostics [F]loat' })
+
 return {}

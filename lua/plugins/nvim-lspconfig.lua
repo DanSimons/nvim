@@ -124,50 +124,58 @@ return {
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-    local servers = {
-      -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      lua_ls = {
-        -- cmd = {...},
-        -- filetypes = { ...},
-        -- capabilities = {},
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
+    local servers =
+      {
+        -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        --
+        lua_ls = {
+          -- cmd = {...},
+          -- filetypes = { ...},
+          -- capabilities = {},
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              -- diagnostics = { disable = { 'missing-fields' } },
             },
-            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
+          },
+        },
+        clangd = {},
+        arduino_language_server = {
+          cmd = {
+            'arduino-language-server',
+            '-cli',
+            vim.fn.expand '~/.local/bin/arduino-cli',
+            '-cli-config',
+            vim.fn.expand '~/.arduino15/arduino-cli.yaml',
+          },
+        },
+        markdownlint = {},
+        ruff = {},
+        pyright = {
+          settings = {
+            pyright = {},
+            python = {
+              analysis = {
+                -- Ignore all files and use Ruff for linting
+                autoSearchPaths = true,
+                diagnosticMode = 'workspace',
+                useLibraryCodeForTypes = true,
+                ignore = { '*' },
+              },
+            },
           },
         },
       },
-      clangd = {},
-      markdownlint = {},
-      ruff = {},
-      basedpyright = {
-        settings = {
-          disableOrganizeImports = true,
-        },
-        python = {
-          venvPath = '.',
-          venv = '.venv',
-          analysis = {
-            autoSearchPaths = true,
-            diagnosticMode = 'workspace',
-            useLibraryCodeForTypes = true,
-            ignore = { '*' },
-          },
-        },
-      },
-    }
-
-    -- Ensure the servers and tools above are installed
-    --  To check the current status of installed tools and/or manually install
-    --  other tools, you can run
-    --    :Mason
-    --
-    --  You can press `g?` for help in this menu.
-    require('mason').setup()
+      -- Ensure the servers and tools above are installed
+      --  To check the current status of installed tools and/or manually install
+      --  other tools, you can run
+      --    :Mason
+      --
+      --  You can press `g?` for help in this menu.
+      require('mason').setup()
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
