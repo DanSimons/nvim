@@ -158,6 +158,8 @@ return {
           settings = {
             pyright = {},
             python = {
+              pythonPath = vim.fn.expand '.venv/bin/python',
+              venv = '.venv',
               analysis = {
                 -- Ignore all files and use Ruff for linting
                 autoSearchPaths = true,
