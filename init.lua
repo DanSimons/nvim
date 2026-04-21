@@ -22,6 +22,7 @@ vim.opt.tabstop = 4
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  if broken ensure clipboard provider is installed. xclip or wl-clipboard depending on display server
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
