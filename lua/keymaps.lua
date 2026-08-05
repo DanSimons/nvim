@@ -79,6 +79,10 @@ map('x', '<leader>fh', [[:<C-u>'<,'>s/"/\\"/g | '<,'>s/^/"/ | '<,'>s/$/\\n"/<CR>
 -- del without yank using x
 map('x', 'x', '"_d', { noremap = true })
 
+-- paste in visual mode without yanking the overwritten text (Neovim 0.10+ P behavior)
+map('x', 'p', 'P', { noremap = true })
+map('x', 'P', 'p', { noremap = true })
+
 -- diagnostic float
 vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { noremap = true, desc = 'Open [D]iagnostics [F]loat' })
 
